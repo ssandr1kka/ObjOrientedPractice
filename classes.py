@@ -9,22 +9,21 @@ class Flight:
         self.destination = destination
         self.duration = duration
 
-    def print_info(self):
-        print(f"Flight origin: {self.origin}")
-        print(f"Flight destination: {self.destination}")
-        print(f"Flight duration: {self.duration}")
-
-        print()
-        print("Passengers:")
-        for passenger in self.passengers:
-            print(f"{passenger.name}")
-
     def delay(self, amount):
         self.duration += amount
 
     def add_passenger(self, p):
         self.passengers.append(p)
         p.flight_id = self.id
+
+    def print_info(self):
+        print(f"Flight origin: {self.origin}")
+        print(f"Flight destination: {self.destination}")
+        print(f"Flight duration: {self.duration}")
+        print()
+        print("Passengers:")
+        for passenger in self.passengers:
+            print(f"{passenger.name}")
 
 
 class Passenger:
