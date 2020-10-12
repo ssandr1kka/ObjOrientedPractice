@@ -14,11 +14,11 @@ class Flight:
 
 
 def main():
-    f1 = Flight(origin="New York", destination="Moscow", duration="950")
-    f1.delay(30)
+    f1 = Flight(origin="New York", destination="Moscow", duration=950)
+    f1.delay(50)
     f1.print_info()
 
-    f2 = Flight(origin="Tbilisi", destination="Nafplio", duration="450")
+    f2 = Flight(origin="Tbilisi", destination="Nafplio", duration=450)
     f2.print_info()
 
 
