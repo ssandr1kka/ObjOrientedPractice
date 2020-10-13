@@ -1,0 +1,32 @@
+{% extends "layout.html"%}
+
+
+{% block title %}
+Flights
+{% endblock %}
+
+{% block body %}
+    <h1>Flight Details</h1>
+    <div>
+    <p>Origin:{{ flight.origin }}</p>
+    <p>Destination: {{ flight.destination }}</p>
+    <p>Duration: {{ flight.duration }} minutes</p>
+    </div>
+    <h2>Passenger List</h2>
+    <div class = "ol">
+    {% if passengers|length == 0 %}
+    <p>No passengers</p>
+    {% else %}
+        <ol>
+            {% for passenger in passengers %}
+                <li>
+                    {{ passenger.name }}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+    </div>
+    <form action = "{{ url_for('index') }}" method = "get">
+        <button class = "btn">Homepage</button>
+    </form>
+{%endblock%} 

@@ -1,0 +1,21 @@
+{% extends "layout.html"%}
+
+
+{% block title %}
+Flights
+{% endblock %}
+
+{% block body %}
+    <h1>All Flights</h1>
+    <div>
+        {% for flight in flights %}
+            <a href = "{{ url_for('flight', flight_id=flight.id) }}">
+                {{ flight.origin }} to {{ flight.destination }}
+            </a>
+            <br>
+        {% endfor %}
+    </div>
+    <form action = "{{ url_for('index') }}" method = "get">
+        <button class = "btn">Homepage</button>
+    </form>
+{%endblock%} 
