@@ -790,7 +790,7 @@ false Zulu
       <ObjectId>13442</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>543</IntrospectionStateNumber>
+      <IntrospectionStateNumber>561</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="test1">
@@ -800,7 +800,10 @@ false Zulu
     <database id="4" parent="1" name="test2">
       <ObjectId>24609</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>541</IntrospectionStateNumber>
+      <IntrospectionStateNumber>559</IntrospectionStateNumber>
+      <Relations>sequence|table|24610|24612|1
+sequence|table|24621|24623|1
+</Relations>
     </database>
     <role id="5" parent="1" name="pg_execute_server_program">
       <ObjectId>4571</ObjectId>
@@ -851,7 +854,7 @@ false Zulu
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>544</IntrospectionStateNumber>
+      <IntrospectionStateNumber>562</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="17" parent="2" name="heap">
@@ -945,7 +948,7 @@ false Zulu
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>542</IntrospectionStateNumber>
+      <IntrospectionStateNumber>560</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="33" parent="4" name="heap">
@@ -1015,5 +1018,116 @@ false Zulu
     <language id="42" parent="4" name="internal"/>
     <language id="43" parent="4" name="plpgsql"/>
     <language id="44" parent="4" name="sql"/>
+    <sequence id="45" parent="32" name="flights_id_seq">
+      <ObjectId>24610</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>545</StateNumber>
+      <DataType>integer|0s</DataType>
+    </sequence>
+    <sequence id="46" parent="32" name="passengers_id_seq">
+      <ObjectId>24621</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>546</StateNumber>
+      <DataType>integer|0s</DataType>
+    </sequence>
+    <table id="47" parent="32" name="flights">
+      <ObjectId>24612</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>546</StateNumber>
+    </table>
+    <table id="48" parent="32" name="passengers">
+      <ObjectId>24623</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>546</StateNumber>
+    </table>
+    <column id="49" parent="47" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>545</StateNumber>
+      <DefaultExpression>nextval(&apos;flights_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="50" parent="47" name="origin">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>545</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="51" parent="47" name="destination">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>545</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="52" parent="47" name="duration">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>545</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="53" parent="47" name="flights_pkey">
+      <ObjectId>24619</ObjectId>
+      <StateNumber>545</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="54" parent="47" name="flights_pkey">
+      <ObjectId>24620</ObjectId>
+      <StateNumber>545</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>flights_pkey</UnderlyingIndexName>
+    </key>
+    <column id="55" parent="48" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>546</StateNumber>
+      <DefaultExpression>nextval(&apos;passengers_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="56" parent="48" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>546</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="57" parent="48" name="flight_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>546</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="58" parent="48" name="passengers_pkey">
+      <ObjectId>24630</ObjectId>
+      <StateNumber>546</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="59" parent="48" name="passengers_pkey">
+      <ObjectId>24631</ObjectId>
+      <StateNumber>546</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>passengers_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="60" parent="48" name="passengers_flight_id_fkey">
+      <ObjectId>24632</ObjectId>
+      <StateNumber>546</StateNumber>
+      <ColNames>flight_id</ColNames>
+      <RefTableId>24612</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>flights</RefTableName>
+      <RefKeyName>flights_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>
